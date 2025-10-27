@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EcoRecycle | Home</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/modern.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="js/supabaseClient.js"></script>
+</head>
+<body>
+  <header class="site-header fade-in">
+    <div class="brand">
+      <div class="brand-orb">♻</div>
+      <div class="brand-text">
+        <h1>EcoRecycle</h1>
+        <p>CIRCULAR FUTURE</p>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <a href="request.html" class="btn outline small">Submit / Track</a>
+      <a href="admin-login.html" class="btn primary small">Admin</a>
+    </div>
+  </header>
+  <main class="layout">
+    <section class="fade-in" style="display:grid;gap:3rem;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));align-items:center;">
+      <div>
+        <h2 style="font-size:clamp(2.2rem,5vw,3.6rem);line-height:1.05;background:linear-gradient(90deg,#fff,#45f59a 60%,#6affb9);-webkit-background-clip:text;color:transparent;margin:0 0 1.1rem;">
+          Turn Discarded Materials Into Tomorrow’s Resources
+        </h2>
+        <p style="font-size:1.05rem;color:#9fb5c1;max-width:640px;">
+          Submit recyclables without an account. Track by mobile or email. Multi-image uploads for better review accuracy.
+        </p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap;margin-top:1.6rem;">
+          <a href="request.html" class="btn primary large">Start Submission</a>
+          <a href="request.html#track" class="btn subtle large">Track a Request →</a>
+        </div>
+      </div>
+      <div class="panel scale-in" style="padding:2rem 2rem 2.3rem;">
+        <h3 style="margin-top:0;">Why EcoRecycle?</h3>
+        <ul style="list-style:none;padding:0;margin:1.2rem 0 0;display:grid;gap:.85rem;font-size:.9rem;color:#bed0d8;">
+          <li>• Conserve natural resources by recycling materials</li>
+          <li>• Reduce landfill waste for a cleaner environment</li>
+          <li>• Save energy through material reuse</li>
+          <li>• Lower carbon emissions with recycling</li>
+          <li>• Support a circular, sustainable future</li>
+        </ul>
+      </div>
+    </section>
+    <section class="panel slide-up">
+      <div class="panel-header">
+        <h3 style="margin:0;">Process Snapshot</h3>
+        <span class="tag">FLOW</span>
+      </div>
+      <div style="display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));">
+        <div class="req-card"><h4>1. Submit</h4><p>Upload multiple images & details.</p></div>
+        <div class="req-card"><h4>2. Review</h4><p>Admins evaluate material sets.</p></div>
+        <div class="req-card"><h4>3. Decide</h4><p>Pending → Accepted / Rejected.</p></div>
+        <div class="req-card"><h4>4. Recover</h4><p>Accepted items re-enter cycle.</p></div>
+      </div>
+    </section>
+  </main>
+  <footer class="footer">
+    © <span id="year"></span> EcoRecycle · Circular Design.
+  </footer>
+  <script>document.getElementById("year").textContent=new Date().getFullYear();</script>
+</body>
+</html>

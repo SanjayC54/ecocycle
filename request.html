@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EcoRecycle | Submit & Track</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/modern.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="js/supabaseClient.js"></script>
+  <script defer src="js/request.js"></script>
+</head>
+<body>
+  <header class="site-header fade-in">
+    <div class="brand">
+      <div class="brand-orb">♻</div>
+      <div class="brand-text">
+        <h1>EcoRecycle</h1>
+        <p>SUBMIT / TRACK</p>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <a href="index.html" class="btn subtle small">Home</a>
+      <a href="admin-login.html" class="btn outline small">Admin</a>
+    </div>
+  </header>
+  <main class="layout">
+    <section class="panel" id="submitPanel">
+      <div class="panel-header">
+        <h3 style="margin:0;">New Recycling Submission</h3>
+        <span class="tag">FORM</span>
+      </div>
+      <form id="recycleForm" autocomplete="off">
+        <div class="form-grid">
+          <div class="field">
+            <label>Name</label>
+            <input id="nameInput" required placeholder="Full name">
+          </div>
+          <div class="field">
+            <label>Mobile</label>
+            <input id="mobileInput" required placeholder="Phone number">
+          </div>
+          <div class="field">
+            <label>Email (optional)</label>
+            <input id="emailInput" type="email" placeholder="you@example.com">
+          </div>
+          <div class="field">
+            <label>Photos (up to 6)</label>
+            <input id="imagesInput" type="file" accept="image/*" multiple required>
+            <small style="font-size:.65rem;color:#8ca5b4;">Attach multiple clear images.</small>
+          </div>
+          <div class="field" style="grid-column:1/-1;">
+            <label>Address</label>
+            <textarea id="addressInput" required placeholder="Pickup or drop-off address"></textarea>
+          </div>
+          <div class="field" style="grid-column:1/-1;">
+            <label>Material Details</label>
+            <textarea id="detailsInput" required placeholder="Type, quantity, condition, extra notes"></textarea>
+          </div>
+          <div class="field" style="grid-column:1/-1;">
+            <div id="previewGallery" class="multi-preview hidden"></div>
+          </div>
+        </div>
+        <button id="submitBtn" type="submit" class="btn primary large" onclick="showSuccessMessage()">🚀 Submit Request</button>
+        <div id="formStatus" class="form-status"></div>
+      </form>
+    </section>
+
+    <section class="panel hidden" id="successPanel">
+      <h3 style="margin-top:0;">✅ Submission Received</h3>
+      <p>Track below using your mobile or email.</p>
+      <div style="display:flex;gap:.75rem;flex-wrap:wrap;">
+        <button id="newRequestBtn" class="btn subtle">Submit Another</button>
+        <a href="#track" class="btn outline">Jump to Tracking ↓</a>
+      </div>
+    </section>
+
+    <section class="panel" id="track">
+      <div class="panel-header">
+        <h3 style="margin:0;">Track a Request</h3>
+        <span class="tag">LOOKUP</span>
+      </div>
+      <div class="form-grid">
+        <div class="field">
+          <label>Mobile OR Email</label>
+            <input id="lookupInput" placeholder="e.g. 9876543210 or you@example.com">
+        </div>
+        <div class="field">
+          <label>&nbsp;</label>
+          <button id="lookupBtn" class="btn outline w-full" type="button">Search</button>
+        </div>
+      </div>
+      <div id="lookupStatus" class="form-status"></div>
+      <div id="resultsGrid" class="request-results"></div>
+      <div id="emptyResults" class="empty-block hidden">No matching submissions found.</div>
+    </section>
+  </main>
+  <footer class="footer">
+    © <span id="year"></span> EcoRecycle · Tracking Impact.
+  </footer>
+  <script>document.getElementById("year").textContent=new Date().getFullYear();</script>
+</body>
+</html>

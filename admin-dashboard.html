@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>EcoRecycle | Admin Dashboard</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="css/modern.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script defer src="js/supabaseClient.js"></script>
+  <script defer src="js/admin-dashboard.js"></script>
+</head>
+<body>
+  <header class="site-header fade-in">
+    <div class="brand">
+      <div class="brand-orb" style="width:58px;height:58px;font-size:1.5rem;">♻</div>
+      <div class="brand-text">
+        <h1 style="font-size:1.4rem;">Admin Console</h1>
+        <p>OPERATIONS</p>
+      </div>
+    </div>
+    <div class="nav-actions">
+      <span id="adminEmailBadge" class="tag">...</span>
+      <a href="index.html" class="btn subtle small">Site</a>
+      <button id="logoutBtn" class="btn outline small">Logout</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="panel slide-up">
+      <div class="panel-header">
+        <h3 style="margin:0;">Overview Metrics</h3>
+        <span class="tag">LIVE</span>
+      </div>
+      <div id="metricsRow" style="display:grid;gap:1.2rem;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));"></div>
+    </section>
+
+    <section class="panel fade-in">
+      <div class="panel-header">
+        <h3 style="margin:0;">Submissions</h3>
+        <div style="display:flex;flex-wrap:wrap;gap:.75rem;">
+          <select id="statusFilter">
+            <option value="">All</option>
+            <option value="pending">Pending</option>
+            <option value="accepted">Accepted</option>
+            <option value="rejected">Rejected</option>
+          </select>
+          <input id="searchInput" placeholder="Search name/mobile/email/details" style="min-width:240px;">
+            <button id="refreshBtn" class="btn subtle small">Refresh</button>
+        </div>
+      </div>
+      <div id="adminStatus" class="form-status"></div>
+      <div id="cardsGrid" class="request-results"></div>
+      <div id="emptyAdmin" class="empty-block hidden">No matching records.</div>
+    </section>
+  </main>
+
+  <dialog id="detailModal">
+    <div class="modal">
+      <div class="modal-head">
+        <h3 id="modalTitle" style="margin:0;">Submission</h3>
+        <button class="close-btn" aria-label="Close">×</button>
+      </div>
+      <div id="modalBody" class="modal-body"></div>
+      <div id="modalFoot" class="modal-foot"></div>
+    </div>
+  </dialog>
+
+  <div id="toasts" class="toast-stack"></div>
+
+  <footer class="footer">
+    © <span id="year"></span> EcoRecycle Admin · Operational Integrity
+  </footer>
+  <script>document.getElementById("year").textContent=new Date().getFullYear();</script>
+</body>
+</html>
